@@ -6,14 +6,14 @@ module TransactionFaker
     def initialize(account, amount, type, category_arr, id)
       @id = Faker::Lorem.characters(38)
       @account = account
-      @date = Faker::Date.between(90.days.ago, Date.today)
+      @date = Faker::Date.backward(90)
       @amount = amount
       @name = Faker::Company.name
       @location = create_location_hash()
       @pending = false #should this vary?
       @pendingTransaction = nil
       @score = create_score
-      @cat = create_category_id
+      @cat = create_category_id(id, category_arr, type)
 
       # Here for backwards compatibility only.
       @type = type

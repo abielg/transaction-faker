@@ -32,4 +32,6 @@ Gem::Specification.new do |spec|
 
   #Gem Dependencies
   spec.add_dependency "faker"
+  spec.add_dependency "rubystats"
+  spec.add_dependency "descriptive_statistics"
 end

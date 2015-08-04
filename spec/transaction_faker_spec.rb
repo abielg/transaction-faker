@@ -18,31 +18,31 @@ describe TransactionFaker do
       },
       "RECREATION" => {
         mean: 40, std_dev: 5, monthly_freq: 2
-        },
+      },
       "UTILITIES" => {
         mean: 60, std_dev: 10, monthly_freq: 6
-        },
+      },
       "HOUSE_SERVICES" => {
         mean: 50, std_dev: 10, monthly_freq: 2
-        },
+      },
       "RENT" => {
         mean: 2000, std_dev:  0, monthly_freq: 1
       },
       "DEFAULT_EXPENSES" => {
         mean: 180, std_dev: 30, monthly_freq: 2
-        },
+      },
       "PERSONAL_CARE" => {
         mean: 40, std_dev: 10, monthly_freq: 2
-        },
+      },
       "GROCERIES" => {
         mean: 40, std_dev: 15, monthly_freq: 4
-        },
+      },
       "SHOPPING" => {
         mean: 60, std_dev: 30, monthly_freq: 3
-        },
+      },
       "PUBLIC_TRANSPORT" => {
         mean: 6, std_dev: 3, monthly_freq: 26
-        },
+      },
       "INCOME" => {
         mean: -500, std_dev: 100, monthly_freq: 1
       },

@@ -1,9 +1,5 @@
 # TransactionFaker
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/transaction_faker`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +18,131 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+We created categories that can model a person’s spending patterns, and they are populated with a few of Plaid’s categories to create the transactions. Here are our categories:
+
+
+
+NIGHTLIFE
+Food and Drink > Bar
+Food and Drink > Nightlife > Night Clubs
+Shops > Food and Beverage Store > Beer, Wine and Spirits
+
+EAT_OUT
+Food and Drink > Restaurants > Steakhouses
+Food and Drink > Restaurants > Mexican
+Food and Drink > Restaurants > Japanese
+Food and Drink > Restaurants > Latin American
+Food and Drink > Restaurants > Coffee Shop
+
+ENTERTAINMENT
+Recreation > Arts and Entertainment > Movie Theatres
+Recreation > Arts and Entertainment > Sports Venues
+Recreation > Arts and Entertainment > Entertainment
+
+RECREATION
+Recreation > Gyms and Fitness Centers
+Recreation > Hunting and Fishing
+Recreation > Batting Cages
+
+UTILITIES
+Service > Cable
+Service > Telecommunication Services
+Service > Internet Services
+Service > Utilities > Water
+Service > Utilities > Heating, Ventilating, and Air Conditioning
+Service > Utilities > Gas
+Service > Utilities > Electric
+
+HOUSE_SERVICES
+Service > Home Improvement > Plumbing
+Service > Cleaning
+Service > Real Estate > Apartments, Condos and Houses
+
+RENT
+Payment > Rent
+
+DEFAULT_EXPENSES
+Service > Financial > Taxes
+Service > Financial > ATMs
+Bank Fees > ATM
+
+PERSONAL_CARE
+Service > Personal Care > Hair Salons and Barbers
+Healthcare > Healthcare Services > Dentists
+Shops > Pharmacies
+
+GROCERIES
+Shops > Food and Beverage Store > Health Food
+Shops > Food and Beverage Store > Farmers Markets
+
+SHOPPING
+Shops > Outlet > Women's Store
+
+PUBLIC_TRANSPORT
+Travel > Public Transportation Services
+
+INCOME
+Tax > Refund
+Transfer > Deposit
+
+PAYROLL
+Transfer > Payroll
+
+
+
+Create a hash where keys are the categories you want to include, and the values are a hash  containing the mean, standard deviation, and monthly frequency of the transaction. Then create a user by passing in the available balance, current balance, and the hash as parameters. Example:
+
+    transaction_hash = {
+      "NIGHTLIFE" => {
+        mean: 23, std_dev: 5, monthly_freq: 7
+      },
+      "EAT_OUT" => {
+        mean: 16, std_dev: 8, monthly_freq: 13
+      },
+      "ENTERTAINMENT" => {
+        mean: 40, std_dev: 25, monthly_freq: 2
+      },
+      "RECREATION" => {
+        mean: 40, std_dev: 5, monthly_freq: 2
+      },
+      "UTILITIES" => {
+        mean: 60, std_dev: 10, monthly_freq: 6
+      },
+      "HOUSE_SERVICES" => {
+        mean: 50, std_dev: 10, monthly_freq: 2
+      },
+      "RENT" => {
+        mean: 2000, std_dev:  0, monthly_freq: 1
+      },
+      "DEFAULT_EXPENSES" => {
+        mean: 180, std_dev: 30, monthly_freq: 2
+      },
+      "PERSONAL_CARE" => {
+        mean: 40, std_dev: 10, monthly_freq: 2
+      },
+      "GROCERIES" => {
+        mean: 40, std_dev: 15, monthly_freq: 4
+      },
+      "SHOPPING" => {
+        mean: 60, std_dev: 30, monthly_freq: 3
+      },
+      "PUBLIC_TRANSPORT" => {
+        mean: 6, std_dev: 3, monthly_freq: 26
+      },
+      "INCOME" => {
+        mean: -500, std_dev: 100, monthly_freq: 1
+      },
+      "PAYROLL" => {
+        mean: -2000, std_dev: 0, monthly_freq: 2
+      }
+    }
+
+
+    user = User.new(1100, 1200, transaction_hash)
+
+Call toJSON to return the user’s account and transactions in JSON form.
+
+    json_format = user.toJSON
 
 ## Development
 

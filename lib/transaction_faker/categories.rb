@@ -1,41 +1,70 @@
 module TransactionFaker
 
   class Categories
-    #How much money did you spend going out?
-    NIGHTLIFE = [13001000, 13004002]
 
-    #How many times did you eat out this past month? How expensive was it?
-    EAT_OUT = [13005007, 13005015, 13005020, 13005017, 13005043]
+    #Categories that are more oriented towards describing a spending pattern than Plaid's
+    SUBCATEGORIES = {
+      #How much money did you spend going out?
+      "NIGHTLIFE" => [13001000, 13004002, 19025004],
 
-    #How much spent in entertainment (movies, sports) ?
-    ENTERTAINMENT = [17001009, 17001003, 17001011]
+      #How many times did you eat out this past month? How expensive was it?
+      "EAT_OUT" => [13005007, 13005015, 13005020, 13005017, 13005043],
 
-    #How much spent in recreation (gym, outdoors)?
-    RECREATION = [17018000, 17022000, 17005000]
+      #How much spent in entertainment (movies, sports, concerts) ?
+      "ENTERTAINMENT" => [17001009, 17001003, 17001011],
 
-    #Water, gas, electricity, ventilation, internet, cable expenditures?
-    UTILITIES = [18009000, 18063000, 18031000, 18068001, 18068003]
+      #How much spent in recreation (gym, outdoors)?
+      "RECREATION" => [17018000, 17022000, 17005000],
 
-    #reparations per month?
-    HOUSE_SERVICES = [18024007, 18011000, 18050009]
+      #Water, gas, electricity, ventilation, internet, cable expenditures?
+      "UTILITIES" => [18009000, 18063000, 18031000, 18068001, 18068003],
 
-    #How much gone in taxes? How much taken out of ATMS?
-    DEFAULT_EXPENSES = [18020001, 18020013]
+      #reparations per month?
+      "HOUSE_SERVICES" => [18024007, 18011000, 18050009],
 
-    #Barbershop, dentist, doctor, etc.
-    PERSONAL_CARE = [18045009, 14001012]
+      "RENT" => [16002000],
 
-    #Weekly expenditures in groceries
-    GROCERIES = [19025002, 19025003, 19025004]
+      #How much gone in taxes? How much taken out of ATMS?
+      "DEFAULT_EXPENSES" => [18020001, 18020013, 10002000],
 
-    #How many clothing apparels does this person buy per month? How expensive?
-    SHOPPING = [19012001]
+      #Barbershop, dentist, doctor, etc.
+      "PERSONAL_CARE" => [18045009, 14001012, 19043000],
 
-    #How expensive is weekday commute and weekend trips?
-    PUBLIC_TRANSPORT = [22014000]
+      #Weekly expenditures in groceries
+      "GROCERIES" => [19025002, 19025003],
 
-    #income received every month?
-    INCOME = [20001000, 21009000, 21007000]
+      #How many clothing apparels does this person buy per month? How expensive?
+      "SHOPPING" => [19012001],
+
+      #How expensive is weekday commute and weekend trips?
+      "PUBLIC_TRANSPORT" => [22014000],
+
+      #income received every month. Not necessarily salary, but it could be?
+      "INCOME" => [20001000, 21007000],
+
+      #Exclusively payroll. Might be empty if salary is delivered through direct deposit.
+      "PAYROLL" =>  [21009000]
+      }
+
+    def self.get_transaction_type(transaction_id, type = "digital")
+      types = {
+        "digital" => [19019000],
+        "special" => [10, 11, 15, 16, 18009, 18050010, 18068000, 18068001,
+                       18068002, 18068003, 18068004, 18068005, 20, 21, 22001,
+                       22006001, 22008000, 22016000, 22017000]
+      }
+
+      types[type].each do |id|
+        length = id.to_s.length
+        if id.to_s[0...length] == transaction_id.to_s[0...length]
+          return type
+        elsif type == "special"
+          return "place"
+        else
+          return get_transaction_type(transaction_id, "special")
+        end
+      end
+    end
 
     FIRST_DIV = {
       10000000 => 'Bank Fees',

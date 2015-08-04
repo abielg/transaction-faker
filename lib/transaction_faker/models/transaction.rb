@@ -1,9 +1,9 @@
 module TransactionFaker
   #Excluded meta
   class TransactionObject
-    attr_accessor :id, :account, :date, :amount, :name, :meta, :location, :pending, :score, :cat, :category, :category_id, :pending_transaction
+    attr_accessor :id, :account, :date, :amount, :name, :meta, :location, :pending, :score, :type, :cat, :category, :category_id, :pending_transaction
 
-    def initialize(account, amount, type, category_arr, id)
+    def initialize(account, amount, category_arr, cat_id)
       @id = Faker::Lorem.characters(38)
       @account = account
       @date = Faker::Date.backward(90)
@@ -13,12 +13,11 @@ module TransactionFaker
       @pending = false #should this vary?
       @pendingTransaction = nil
       @score = create_score
-      @cat = create_category_id(id, category_arr, type)
 
       # Here for backwards compatibility only.
-      @type = type
+      @type = { primary: Categories.get_transaction_type(cat_id) }
       @category = category_arr
-      @category_id = create_category_id(type, category_arr, id)
+      @category_id = cat_id
       @meta = {"location" => @location["coordinates"]}
     end
 
@@ -41,14 +40,6 @@ module TransactionFaker
             "name" => 1,
             "state" => 1
           }
-        }
-      end
-
-      def create_category_id(id, category_arr, type)
-        hash = {
-          'category_id' => id,
-          'hierarchy' => category_arr,
-          'type' => type
         }
       end
   end

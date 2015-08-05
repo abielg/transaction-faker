@@ -22,29 +22,34 @@ We created categories that can model a person’s spending patterns, and they ar
 
 
 
-NIGHTLIFE
+<b>NIGHTLIFE</b>
+
 Food and Drink > Bar
 Food and Drink > Nightlife > Night Clubs
 Shops > Food and Beverage Store > Beer, Wine and Spirits
 
-EAT_OUT
+<b>EAT_OUT</b>
+
 Food and Drink > Restaurants > Steakhouses
 Food and Drink > Restaurants > Mexican
 Food and Drink > Restaurants > Japanese
 Food and Drink > Restaurants > Latin American
 Food and Drink > Restaurants > Coffee Shop
 
-ENTERTAINMENT
+<b>ENTERTAINMENT</b>
+
 Recreation > Arts and Entertainment > Movie Theatres
 Recreation > Arts and Entertainment > Sports Venues
 Recreation > Arts and Entertainment > Entertainment
 
-RECREATION
+<b>RECREATION</b>
+
 Recreation > Gyms and Fitness Centers
 Recreation > Hunting and Fishing
 Recreation > Batting Cages
 
-UTILITIES
+<b>UTILITIES</b>
+
 Service > Cable
 Service > Telecommunication Services
 Service > Internet Services
@@ -53,42 +58,52 @@ Service > Utilities > Heating, Ventilating, and Air Conditioning
 Service > Utilities > Gas
 Service > Utilities > Electric
 
-HOUSE_SERVICES
+<b>HOUSE_SERVICES</b>
+
 Service > Home Improvement > Plumbing
 Service > Cleaning
 Service > Real Estate > Apartments, Condos and Houses
 
-RENT
+<b>RENT</b>
+
 Payment > Rent
 
-DEFAULT_EXPENSES
+<b>DEFAULT_EXPENSES</b>
+
 Service > Financial > Taxes
 Service > Financial > ATMs
 Bank Fees > ATM
 
-PERSONAL_CARE
+<b>PERSONAL_CARE</b>
+
 Service > Personal Care > Hair Salons and Barbers
 Healthcare > Healthcare Services > Dentists
 Shops > Pharmacies
 
-GROCERIES
+<b>GROCERIES</b>
+
 Shops > Food and Beverage Store > Health Food
 Shops > Food and Beverage Store > Farmers Markets
 
-SHOPPING
+<b>SHOPPING</b>
+
 Shops > Outlet > Women's Store
 
-RIDE_SHARING
+<b>RIDE_SHARING</b>
+
 Travel > Car Service > Ride Share
 
-DAILY_COMMUTE
+<b>DAILY_COMMUTE</b>
+
 Travel > Public Transportation Services
 
-INCOME
+<b>INCOME</b>
+
 Tax > Refund
 Transfer > Deposit
 
-PAYROLL
+<b>PAYROLL</b>
+
 Transfer > Payroll
 
 

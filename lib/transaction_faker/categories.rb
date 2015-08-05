@@ -36,8 +36,11 @@ module TransactionFaker
       #How many clothing apparels does this person buy per month? How expensive?
       "SHOPPING" => [19012001],
 
-      #How expensive is weekday commute and weekend trips?
-      "PUBLIC_TRANSPORT" => [22014000],
+      #Uber, Lyft, weekend trips etc.
+      "RIDE_SHARING" => [22006001],
+
+      #Weekday commute as if it was all paid once at the start of the month
+      "DAILY_COMMUTE" => [22014000],
 
       #income received every month. Not necessarily salary, but it could be?
       "INCOME" => [20001000, 21007000],

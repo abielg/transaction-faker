@@ -10,7 +10,7 @@ module TransactionFaker
       @access_token = Faker::Lorem.characters(37)
     end
 
-    def toJSON
+    def to_json
       user_hash = {
         accounts: [
           {
@@ -32,9 +32,8 @@ module TransactionFaker
     end
 
     def add_hash_transactions
-      transaction_array = []
-      @transactions.each do |transaction|
-        transaction_array << {
+      @transactions.map do |transaction|
+        {
           _account: transaction.account.id,
           _id: transaction.id,
           amount: transaction.amount,
@@ -48,7 +47,6 @@ module TransactionFaker
           score: transaction.score
         }
       end
-      transaction_array
     end
   end
 end

@@ -78,7 +78,10 @@ Shops > Food and Beverage Store > Farmers Markets
 SHOPPING
 Shops > Outlet > Women's Store
 
-PUBLIC_TRANSPORT
+RIDE_SHARING
+Travel > Car Service > Ride Share
+
+DAILY_COMMUTE
 Travel > Public Transportation Services
 
 INCOME
@@ -126,8 +129,11 @@ Create a hash where keys are the categories you want to include, and the values 
       "SHOPPING" => {
         mean: 60, std_dev: 30, monthly_freq: 3
       },
+      "RIDE_SHARING" => {
+        mean: 8, std_dev: 3, monthly_freq: 8
+      }
       "PUBLIC_TRANSPORT" => {
-        mean: 6, std_dev: 3, monthly_freq: 26
+        mean: 130, std_dev: 0, monthly_freq: 1
       },
       "INCOME" => {
         mean: -500, std_dev: 100, monthly_freq: 1
@@ -140,9 +146,9 @@ Create a hash where keys are the categories you want to include, and the values 
 
     user = User.new(1100, 1200, transaction_hash)
 
-Call toJSON to return the user’s account and transactions in JSON form.
+Call to_json to return the user’s account and transactions in JSON form.
 
-    json_format = user.toJSON
+    json_format = user.to_json
 
 ## Development
 

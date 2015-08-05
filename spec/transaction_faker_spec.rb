@@ -40,8 +40,11 @@ describe TransactionFaker do
       "SHOPPING" => {
         mean: 60, std_dev: 30, monthly_freq: 3
       },
-      "PUBLIC_TRANSPORT" => {
-        mean: 6, std_dev: 3, monthly_freq: 26
+      "RIDE_SHARING" => {
+        mean: 8 , std_dev: 3, monthly_freq: 8
+      },
+      "DAILY_COMMUTE" => {
+        mean: 130, std_dev: 0, monthly_freq: 1
       },
       "INCOME" => {
         mean: -500, std_dev: 100, monthly_freq: 1
@@ -54,7 +57,7 @@ describe TransactionFaker do
     user = User.new(1100, 1200, transaction_hash)
 
     it 'creates a user with correct number of transactions' do
-      expect(user.transactions.size).to eq(73)
+      expect(user.transactions.size).to eq(168)
     end
 
     it 'creates a user with a correct account' do

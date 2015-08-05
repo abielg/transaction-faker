@@ -1,12 +1,12 @@
 module TransactionFaker
   #Excluded meta
-  class TransactionObject
+  class Transaction
     attr_accessor :id, :account, :date, :amount, :name, :meta, :location, :pending, :score, :type, :cat, :category, :category_id, :pending_transaction
 
-    def initialize(account, amount, category_arr, cat_id)
+    def initialize(account, amount, category_arr, cat_id, days_ago)
       @id = Faker::Lorem.characters(38)
       @account = account
-      @date = Faker::Date.backward(90)
+      @date = Faker::Date.between(Faker::Date.backward(days_ago), Faker::Date.backward(days_ago - 30))
       @amount = amount
       @name = Faker::Company.name
       @location = create_location_hash()

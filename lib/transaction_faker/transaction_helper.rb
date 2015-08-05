@@ -17,13 +17,14 @@ module TransactionFaker
     #Uses the TransactionHelper objects from the array created in 'create_data' to
     #create an array of transactions over three months.
     def self.create_transactions(transaction_hash, account_id)
-      [90, 60, 30].flat_map do |days_ago|
+      3.times.flat_map do |month_offset|
         transaction_hash.flat_map do |category, data|
           subcategories = Categories::SUBCATEGORIES[category]
+
           normal_distribution(data[:mean], data[:std_dev], data[:monthly_freq]).map do |price|
             category_id = subcategories.sample
             cat_array = create_category_array(category_id)
-            Transaction.new(account_id, price, cat_array, category_id, days_ago)
+            Transaction.new(account_id, price, cat_array, category_id.to_s, month_offset + 1)
           end
         end
       end

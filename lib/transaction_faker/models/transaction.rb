@@ -1,12 +1,14 @@
+require 'date'
+
 module TransactionFaker
   #Excluded meta
   class Transaction
     attr_accessor :id, :account, :date, :amount, :name, :meta, :location, :pending, :score, :type, :cat, :category, :category_id, :pending_transaction
 
-    def initialize(account, amount, category_arr, cat_id, days_ago)
+    def initialize(account, amount, category_arr, cat_id, month_offset)
       @id = Faker::Lorem.characters(38)
       @account = account
-      @date = Faker::Date.between(Faker::Date.backward(days_ago), Faker::Date.backward(days_ago - 30))
+      @date = generate_date(month_offset)
       @amount = amount
       @name = Faker::Company.name
       @location = create_location_hash()
@@ -22,25 +24,36 @@ module TransactionFaker
     end
 
     private
-      def create_location_hash()
-        hash = {
-          "coordinates" => {
-            "lat" => Faker::Address.latitude.to_i,
-            "lon" => Faker::Address.longitude.to_i,
-          }
-        }
-      end
 
-      def create_score
-        hash = {
-          "master" => 1,
-          "detail" => {
-            "address" => 1,
-            "city" => 1,
-            "name" => 1,
-            "state" => 1
-          }
+    def generate_date(month_offset)
+      today = Date.today
+      month = today.prev_month(month_offset)
+
+      start_of_month = Date.new(month.year, month.month)
+      end_of_month = Date.new(start_of_month.year, start_of_month.month + 1) - 1
+
+      Faker::Date.between(start_of_month, end_of_month).iso8601
+    end
+
+    def create_location_hash()
+      hash = {
+        "coordinates" => {
+          "lat" => Faker::Address.latitude.to_i,
+          "lon" => Faker::Address.longitude.to_i,
         }
-      end
+      }
+    end
+
+    def create_score
+      hash = {
+        "master" => 1,
+        "detail" => {
+          "address" => 1,
+          "city" => 1,
+          "name" => 1,
+          "state" => 1
+        }
+      }
+    end
   end
 end

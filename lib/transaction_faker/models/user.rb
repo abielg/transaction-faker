@@ -4,10 +4,15 @@ module TransactionFaker
   class User
     attr_accessor :account, :transactions, :access_token
 
-    def initialize(available_balance, current_balance, transaction_hash)
+    def initialize(available_balance, current_balance, transaction_hash, seed = nil)
+      srand(seed) if seed
       @account = Account.new(available_balance, current_balance)
       @transactions = TransactionHelper::create_transactions(transaction_hash, account)
       @access_token = Faker::Lorem.characters(37)
+    end
+
+    def ==(other_user)
+      @account == other_user.account
     end
 
     def to_json

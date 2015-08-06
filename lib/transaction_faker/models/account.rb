@@ -13,6 +13,10 @@ module TransactionFaker
       @type = "depository"
     end
 
+    def ==(other_account)
+      @id = other_account.id
+    end
+
     private
 
     def get_random_institution

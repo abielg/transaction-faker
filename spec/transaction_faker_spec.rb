@@ -63,4 +63,16 @@ describe TransactionFaker do
     it 'creates a user with a correct account' do
       expect(user.account.balance["available"]).to eq(1100)
     end
+
+    it 'generates the same user when Kernel.srand is set to the same value' do
+      user1 = User.new(1100, 1200, transaction_hash, 1234)
+      user2 = User.new(1100, 1200, transaction_hash, 1234)
+      expect(user1).to eq(user2)
+    end
+
+    it 'generates different users when Kernel.srand is not used' do
+      user1 = User.new(1100, 1200, transaction_hash)
+      user2 = User.new(1100, 1200, transaction_hash)
+      expect(user1).not_to eql(user2)
+    end
   end

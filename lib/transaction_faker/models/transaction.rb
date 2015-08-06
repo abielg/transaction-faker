@@ -23,6 +23,10 @@ module TransactionFaker
       @meta = {"location" => @location["coordinates"]}
     end
 
+    def ==(other_transaction)
+      @id == other_transaction.id
+    end
+
     private
 
     def generate_date(month_offset)

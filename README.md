@@ -164,6 +164,8 @@ Create a hash where keys are the categories you want to include, and the values 
 Call to_json to return the user’s account and transactions in JSON form.
 
     json_format = user.to_json
+    
+If you need to recreate the same user and transactions from a previous iteration, pass in the seed number as a 4th argument to the user's initializer, so that 'srand()' will be called with the provided seed.
 
 ## Development
 

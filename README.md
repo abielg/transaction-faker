@@ -167,6 +167,8 @@ Call to_json to return the user’s account and transactions in JSON form.
     
 If you need to recreate the same user and transactions from a previous iteration, pass in the seed number as a 4th argument to the user's initializer, so that 'srand()' will be called with the provided seed.
 
+    user = User.new(1100, 1200, transaction_hash, 1234)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

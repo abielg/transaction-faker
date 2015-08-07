@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Abiel Gutierrez"]
   spec.email         = ["abielg@stanford.com"]
 
-  spec.summary       = %q{A ruby gem that creates fake data to mimick Plaid's "Connect" service.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Creates fake bank account data and transactions to mimick an API response from Plaid's "Connect" service.}
+  spec.homepage      = "https://github.com/abielg/transaction-faker"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.

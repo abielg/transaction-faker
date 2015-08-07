@@ -22,93 +22,78 @@ We created categories that can model a person’s spending patterns, and they ar
 
 
 
-<b>NIGHTLIFE</b>
+<b>NIGHTLIFE</b>  
+Food and Drink > Bar  
+Food and Drink > Nightlife > Night Clubs  
+Shops > Food and Beverage Store > Beer, Wine and Spirits  
 
-Food and Drink > Bar
-Food and Drink > Nightlife > Night Clubs
-Shops > Food and Beverage Store > Beer, Wine and Spirits
+<b>EAT_OUT</b>  
+Food and Drink > Restaurants > Steakhouses  
+Food and Drink > Restaurants > Mexican  
+Food and Drink > Restaurants > Japanese  
+Food and Drink > Restaurants > Latin American  
+Food and Drink > Restaurants > Coffee Shop  
 
-<b>EAT_OUT</b>
+<b>ENTERTAINMENT</b>  
+Recreation > Arts and Entertainment > Movie Theatres  
+Recreation > Arts and Entertainment > Sports Venues  
+Recreation > Arts and Entertainment > Entertainment  
 
-Food and Drink > Restaurants > Steakhouses
-Food and Drink > Restaurants > Mexican
-Food and Drink > Restaurants > Japanese
-Food and Drink > Restaurants > Latin American
-Food and Drink > Restaurants > Coffee Shop
+<b>RECREATION</b>  
+Recreation > Gyms and Fitness Centers  
+Recreation > Hunting and Fishing  
+Recreation > Batting Cages  
 
-<b>ENTERTAINMENT</b>
+<b>UTILITIES</b>  
+Service > Cable  
+Service > Telecommunication Services  
+Service > Internet Services  
+Service > Utilities > Water  
+Service > Utilities > Heating, Ventilating, and Air Conditioning  
+Service > Utilities > Gas  
+Service > Utilities > Electric  
 
-Recreation > Arts and Entertainment > Movie Theatres
-Recreation > Arts and Entertainment > Sports Venues
-Recreation > Arts and Entertainment > Entertainment
+<b>HOUSE_SERVICES</b>  
+Service > Home Improvement > Plumbing  
+Service > Cleaning  
+Service > Real Estate > Apartments, Condos and Houses  
 
-<b>RECREATION</b>
+<b>RENT</b>  
+Payment > Rent  
 
-Recreation > Gyms and Fitness Centers
-Recreation > Hunting and Fishing
-Recreation > Batting Cages
+<b>DEFAULT_EXPENSES</b>  
+Service > Financial > Taxes  
+Service > Financial > ATMs  
+Bank Fees > ATM  
 
-<b>UTILITIES</b>
+<b>PERSONAL_CARE</b>  
+Service > Personal Care > Hair Salons and Barbers  
+Healthcare > Healthcare Services > Dentists  
+Shops > Pharmacies  
 
-Service > Cable
-Service > Telecommunication Services
-Service > Internet Services
-Service > Utilities > Water
-Service > Utilities > Heating, Ventilating, and Air Conditioning
-Service > Utilities > Gas
-Service > Utilities > Electric
+<b>GROCERIES</b>  
+Shops > Food and Beverage Store > Health Food  
+Shops > Food and Beverage Store > Farmers Markets  
 
-<b>HOUSE_SERVICES</b>
+<b>SHOPPING</b>  
+Shops > Outlet > Women's Store  
 
-Service > Home Improvement > Plumbing
-Service > Cleaning
-Service > Real Estate > Apartments, Condos and Houses
+<b>RIDE_SHARING</b>  
+Travel > Car Service > Ride Share  
 
-<b>RENT</b>
+<b>DAILY_COMMUTE</b>  
+Travel > Public Transportation Services  
 
-Payment > Rent
+<b>INCOME</b>  
+Tax > Refund  
+Transfer > Deposit  
 
-<b>DEFAULT_EXPENSES</b>
-
-Service > Financial > Taxes
-Service > Financial > ATMs
-Bank Fees > ATM
-
-<b>PERSONAL_CARE</b>
-
-Service > Personal Care > Hair Salons and Barbers
-Healthcare > Healthcare Services > Dentists
-Shops > Pharmacies
-
-<b>GROCERIES</b>
-
-Shops > Food and Beverage Store > Health Food
-Shops > Food and Beverage Store > Farmers Markets
-
-<b>SHOPPING</b>
-
-Shops > Outlet > Women's Store
-
-<b>RIDE_SHARING</b>
-
-Travel > Car Service > Ride Share
-
-<b>DAILY_COMMUTE</b>
-
-Travel > Public Transportation Services
-
-<b>INCOME</b>
-
-Tax > Refund
-Transfer > Deposit
-
-<b>PAYROLL</b>
-
-Transfer > Payroll
+<b>PAYROLL</b>  
+Transfer > Payroll  
 
 
 
-Create a hash where keys are the categories you want to include, and the values are a hash  containing the mean, standard deviation, and monthly frequency of the transaction. Then create a user by passing in the available balance, current balance, and the hash as parameters. Example:
+Create a hash where keys are the categories you want to include, and the values are a hash containing the mean, standard deviation, and monthly frequency of the transaction you want to create. Choose an "available balance" and a "current balance" for the fake user, and then initialize it by passing in these two numbers and the transaction hash to its initializer. Example:
 
     transaction_hash = {
       "NIGHTLIFE" => {
@@ -161,7 +146,7 @@ Create a hash where keys are the categories you want to include, and the values 
 
     user = User.new(1100, 1200, transaction_hash)
 
-Call to_json to return the user’s account and transactions in JSON form.
+Once you have the user object created, you can call the "to_json" method to return the user’s account and transactions in JSON form.
 
     json_format = user.to_json
     
